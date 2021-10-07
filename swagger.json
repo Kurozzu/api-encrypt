@@ -1,0 +1,75 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This API allows encrypt and decrypt documents\n\nSchemes: [http, https]",
+    "title": "Api_Encrypt",
+    "contact": {
+      "name": "Felipe Morales",
+      "email": "fmorales@asicom.cl"
+    },
+    "version": "0.0.1"
+  },
+  "host": "localhost:9076/api",
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Index"
+        ],
+        "summary": "Check if the service is running.",
+        "operationId": "index",
+        "responses": {
+          "200": {
+            "description": "Welcome to my Rest API to encrypt and decrypt documents"
+          }
+        }
+      }
+    },
+    "/api/encrypt": {
+      "post": {
+        "description": "allows convert files to base64",
+        "tags": [
+          "EncryptDocument"
+        ],
+        "operationId": "EncryptDocument",
+        "parameters": [
+          {
+            "type": "file",
+            "description": "Are the files you want to upload",
+            "name": "files",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Is the number of service of client",
+            "name": "servicio",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Is the path where files saved",
+            "name": "path",
+            "in": "formData",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "URL array of uploaded files"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Page not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  }
+}
